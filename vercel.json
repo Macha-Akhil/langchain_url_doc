@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "azureopenai.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "*.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/azureopenai.py"
+    }
+  ]
+}
