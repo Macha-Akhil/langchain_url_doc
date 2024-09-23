@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI</title>
+  </head>
+  <body>
+    <h1>Ask a Question</h1>
+    <form method="POST" action="/next1">
+      <label for="url1">url1:</label><br />
+      <input
+        type="text"
+        size="200"
+        id="url1"
+        name="url1"
+        required
+      /><br /><br />
+      <label for="url2">url2:</label><br />
+      <input
+        type="text"
+        size="200"
+        id="url2"
+        name="url2"
+        required
+      /><br /><br />
+      <label for="url3">url3:</label><br />
+      <input
+        type="text"
+        size="200"
+        id="url3"
+        name="url3"
+        required
+      /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <!-- {% if question %}
+    <h2>Question:</h2>
+    <p>{{ question }}</p>
+    {% endif %} {% if answer %}
+    <h2>Answer:</h2>
+    <p>{{ answer }}</p>
+    {% endif %} -->
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+      .container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .section {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- URL Submission Form -->
+    <div
+      id="url-form-container"
+      class="{{ 'hidden' if urls_submitted else '' }}"
+    >
+      <h1>Post a URL</h1>
+      <form method="POST" action="/">
+        <label for="url1">URL1:</label><br />
+        <input
+          type="text"
+          size="200"
+          id="url1"
+          name="url1"
+          required
+        /><br /><br />
+        <label for="url2">URL2:</label><br />
+        <input
+          type="text"
+          size="200"
+          id="url2"
+          name="url2"
+          required
+        /><br /><br />
+        <label for="url3">URL3:</label><br />
+        <input
+          type="text"
+          size="200"
+          id="url3"
+          name="url3"
+          required
+        /><br /><br />
+        <input type="submit" name="submit_urls" value="Submit URLs" />
+      </form>
+    </div>
+
+    <!-- Question Form -->
+    <div
+      id="question-section"
+      class="{{ 'hidden' if not question_form_visible else '' }}"
+    >
+      <h1>Ask a Question</h1>
+      <form method="POST" action="/">
+        <label for="question">Question:</label><br />
+        <input
+          type="text"
+          size="200"
+          id="question"
+          name="question"
+          required
+        /><br /><br />
+        <input type="submit" name="submit_question" value="Submit Question" />
+      </form>
+    </div>
+
+    <!-- Flex Container for Display Sections -->
+    <div class="container">
+      <!-- Display Submitted URLs -->
+      <div
+        id="submitted-urls"
+        class="{{ 'hidden' if not urls_submitted else 'section' }}"
+      >
+        <h2>Submitted URLs:</h2>
+        <ul id="url-list">
+          {% for url in urls %}
+          <li>{{ url }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Display Answer -->
+      <div id="response" class="{{ 'hidden' if not answer else 'section' }}">
+        {% if question %}
+        <h2>Question:</h2>
+        <p>{{ question }}</p>
+        {% endif %} {% if answer %}
+        <h2>Answer:</h2>
+        <p>{{ answer }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

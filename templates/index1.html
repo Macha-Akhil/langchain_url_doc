@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Post a URL</h1>
+      <form id="url-form">
+        <label for="url1">URL1:</label><br />
+        <input
+          type="text"
+          size="200"
+          id="url1"
+          name="url1"
+          required
+        /><br /><br />
+        <label for="url2">URL2:</label><br />
+        <input
+          type="text"
+          size="200"
+          id="url2"
+          name="url2"
+          required
+        /><br /><br />
+        <label for="url3">URL3:</label><br />
+        <input
+          type="text"
+          size="200"
+          id="url3"
+          name="url3"
+          required
+        /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    <div id="question-section" class="hidden">
+      <h1>Ask a Question</h1>
+      <form id="question-form">
+        <label for="question">Question:</label><br />
+        <input
+          type="text"
+          size="200"
+          id="question"
+          name="question"
+          required
+        /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    <div id="submitted-urls" class="hidden">
+      <h2>Submitted URLs:</h2>
+      <ul id="url-list"></ul>
+    </div>
+    <div id="response" class="hidden">
+      {% if question %}
+      <h2>Question:</h2>
+      <p>{{ question }}</p>
+      {% endif %} {% if answer %}
+      <h2>Answer:</h2>
+      <p>{{ answer }}</p>
+      {% endif %}
+    </div>
+
+    <script>
+      document
+        .getElementById("url-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form submission
+
+          // Get URL values
+          const url1 = document.getElementById("url1").value;
+          const url2 = document.getElementById("url2").value;
+          const url3 = document.getElementById("url3").value;
+
+          // Display URLs
+          const urlList = document.getElementById("url-list");
+          urlList.innerHTML = `
+                <li>${url1}</li>
+                <li>${url2}</li>
+                <li>${url3}</li>
+            `;
+
+          // Show question section and URLs
+          document
+            .getElementById("question-section")
+            .classList.remove("hidden");
+          document.getElementById("submitted-urls").classList.remove("hidden");
+        });
+    </script>
+  </body>
+</html>
